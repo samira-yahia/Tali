@@ -1,0 +1,41 @@
+import type { Ingredient, MenuItem } from '../types';
+
+export const INGREDIENTS: Ingredient[] = [
+  { id: 'rice', name: 'Rice', unit: 'kg', stock: 18, par: 20, cost: 28, supplier: 'Al Ahram Foods' },
+  { id: 'lentil', name: 'Lentils', unit: 'kg', stock: 6, par: 8, cost: 45, supplier: 'Al Ahram Foods' },
+  { id: 'pasta', name: 'Pasta', unit: 'kg', stock: 9, par: 10, cost: 32, supplier: 'Al Ahram Foods' },
+  { id: 'chick', name: 'Chicken', unit: 'kg', stock: 14, par: 15, cost: 120, supplier: 'Cairo Poultry' },
+  { id: 'beef', name: 'Beef', unit: 'kg', stock: 4.5, par: 10, cost: 380, supplier: 'Cairo Poultry' },
+  { id: 'molo', name: 'Molokhia', unit: 'kg', stock: 3, par: 5, cost: 60, supplier: 'Green Valley' },
+  { id: 'veg', name: 'Mixed vegetables', unit: 'kg', stock: 12, par: 10, cost: 25, supplier: 'Green Valley' },
+  { id: 'tahini', name: 'Tahini', unit: 'kg', stock: 2, par: 4, cost: 150, supplier: 'Al Ahram Foods' },
+  { id: 'bread', name: 'Baladi bread', unit: 'pc', stock: 120, par: 150, cost: 2.5, supplier: 'Bakery Co' },
+  { id: 'mango', name: 'Mango pulp', unit: 'l', stock: 5, par: 6, cost: 90, supplier: 'Green Valley' },
+  { id: 'hib', name: 'Hibiscus', unit: 'kg', stock: 1.2, par: 2, cost: 110, supplier: 'Al Ahram Foods' },
+  { id: 'milk', name: 'Milk', unit: 'l', stock: 10, par: 12, cost: 38, supplier: 'Juhayna' },
+  { id: 'sugar', name: 'Sugar', unit: 'kg', stock: 7, par: 8, cost: 30, supplier: 'Al Ahram Foods' },
+  { id: 'nuts', name: 'Mixed nuts', unit: 'kg', stock: 1.5, par: 2, cost: 420, supplier: 'Al Ahram Foods' },
+  { id: 'kona', name: 'Konafa dough', unit: 'kg', stock: 0, par: 3, cost: 70, supplier: 'Bakery Co' },
+];
+
+export const MENU: MenuItem[] = [
+  { id: 1, category: 'Main course', name: 'Koshary', price: 65, icon: '🍝', recipe: { rice: 0.12, lentil: 0.08, pasta: 0.1, veg: 0.05 }, modifiers: 'size' },
+  { id: 2, category: 'Main course', name: 'Molokhia with rice', price: 95, icon: '🥬', recipe: { molo: 0.15, rice: 0.15, chick: 0.1 }, modifiers: 'protein' },
+  { id: 3, category: 'Main course', name: 'Chicken fattah', price: 140, icon: '🍛', recipe: { rice: 0.2, chick: 0.25, bread: 2 } },
+  { id: 4, category: 'Main course', name: 'Hawawshi', price: 85, icon: '🥙', recipe: { beef: 0.15, bread: 1, veg: 0.03 } },
+  { id: 5, category: 'Main course', name: 'Ful & taameya plate', price: 55, icon: '🧆', recipe: { bread: 2, veg: 0.08, tahini: 0.03 } },
+  { id: 6, category: 'Main course', name: 'Shawarma wrap', price: 90, icon: '🌯', recipe: { chick: 0.18, bread: 1, tahini: 0.02, veg: 0.04 }, modifiers: 'protein' },
+  { id: 7, category: 'Grills', name: 'Mixed grill', price: 260, icon: '🍢', recipe: { beef: 0.25, chick: 0.2, veg: 0.1, bread: 2 } },
+  { id: 8, category: 'Grills', name: 'Kofta skewers', price: 150, icon: '🍡', recipe: { beef: 0.22, bread: 2, veg: 0.05 } },
+  { id: 9, category: 'Grills', name: 'Grilled chicken half', price: 135, icon: '🍗', recipe: { chick: 0.5, rice: 0.1 } },
+  { id: 10, category: 'Soup', name: 'Lentil soup', price: 45, icon: '🍲', recipe: { lentil: 0.1, veg: 0.05 } },
+  { id: 11, category: 'Soup', name: 'Orzo soup', price: 40, icon: '🥣', recipe: { pasta: 0.06, chick: 0.05 } },
+  { id: 12, category: 'Salads', name: 'Baladi salad', price: 35, icon: '🥗', recipe: { veg: 0.2 } },
+  { id: 13, category: 'Salads', name: 'Tahini & baba ghanoush', price: 40, icon: '🥙', recipe: { tahini: 0.06, veg: 0.1, bread: 1 } },
+  { id: 14, category: 'Drinks', name: 'Mango juice', price: 50, icon: '🥭', recipe: { mango: 0.25, sugar: 0.02 }, modifiers: 'size' },
+  { id: 15, category: 'Drinks', name: 'Karkade', price: 35, icon: '🧃', recipe: { hib: 0.03, sugar: 0.03 }, modifiers: 'size' },
+  { id: 16, category: 'Drinks', name: 'Sahlab', price: 45, icon: '☕', recipe: { milk: 0.25, sugar: 0.02, nuts: 0.01 } },
+  { id: 17, category: 'Dessert', name: 'Om Ali', price: 70, icon: '🍮', recipe: { milk: 0.2, nuts: 0.03, sugar: 0.03, bread: 1 } },
+  { id: 18, category: 'Dessert', name: 'Konafa', price: 80, icon: '🥧', recipe: { kona: 0.15, nuts: 0.02, sugar: 0.05 } },
+  { id: 19, category: 'Dessert', name: 'Basbousa', price: 40, icon: '🍯', recipe: { sugar: 0.06, milk: 0.05, nuts: 0.01 } },
+];
