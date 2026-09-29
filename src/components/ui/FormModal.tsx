@@ -48,7 +48,7 @@ export function FormModal({ intro, fields, submitLabel, onSubmit, modalId }: For
     >
       <Stack>
         {intro}
-        <SimpleGrid cols={fields.length > 1 ? 2 : 1}>
+        <SimpleGrid cols={fields.length > 1 ? { base: 1, xs: 2 } : 1}>
           {fields.map((f, i) => {
             const common = {
               label: f.label,

@@ -1,9 +1,10 @@
-import { Button, SegmentedControl, SimpleGrid, Stack, TextInput } from '@mantine/core';
+import { Button, SimpleGrid, Stack, TextInput } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { KpiCard } from '../../components/ui/KpiCard';
 import { PageHeader, Spacer } from '../../components/ui/PageHeader';
+import { ScrollSegments } from '../../components/ui/ScrollSegments';
 import { CATEGORIES, ORDER_TYPES } from '../../domain/constants';
 import { cashExpected, isOpen, isPaidSale, isUnpaid } from '../../domain/orders';
 import { whole } from '../../lib/format';
@@ -34,7 +35,7 @@ export function PosPage() {
       </SimpleGrid>
 
       <PageHeader title="Order line">
-        <SegmentedControl
+        <ScrollSegments
           value={lineType}
           onChange={(v) => setLineType(v as OrderType)}
           data={ORDER_TYPES.map((t) => ({ value: t, label: `${t} · ${orders.filter((o) => o.type === t && isOpen(o)).length}` }))}
@@ -47,7 +48,7 @@ export function PosPage() {
       <OrderLine type={lineType} />
 
       <PageHeader title="Menu">
-        <SegmentedControl
+        <ScrollSegments
           value={category}
           onChange={setCategory}
           data={['All', ...CATEGORIES].map((c) => ({
@@ -62,7 +63,7 @@ export function PosPage() {
           value={query}
           onChange={(e) => setQuery(e.currentTarget.value)}
           radius="xl"
-          w={220}
+          w={{ base: '100%', xs: 220 }}
         />
       </PageHeader>
       <MenuGrid category={category} query={query} />

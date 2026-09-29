@@ -22,7 +22,7 @@ export function MenuGrid({ category, query }: { category: string; query: string 
     );
 
   return (
-    <SimpleGrid cols={{ base: 1, sm: 2, xl: 3 }}>
+    <SimpleGrid type="container" cols={{ base: 1, '600px': 2, '920px': 3 }}>
       {list.map((m) => {
         const qty = cart.filter((l) => l.itemId === m.id).reduce((s, l) => s + l.qty, 0);
         const out = m.hidden || !isAvailable(m, ingredients);

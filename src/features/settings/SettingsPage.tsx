@@ -1,10 +1,11 @@
-import { Badge, Button, Card, Group, SegmentedControl, SimpleGrid, Stack, Switch, Text, Title } from '@mantine/core';
+import { Badge, Button, Card, Group, SimpleGrid, Stack, Switch, Text, Title } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { useState } from 'react';
 import { toggleConnection } from '../../app/connection';
 import { DataTable } from '../../components/ui/DataTable';
 import { InfoCard } from '../../components/ui/InfoRows';
 import { PageHeader } from '../../components/ui/PageHeader';
+import { ScrollSegments } from '../../components/ui/ScrollSegments';
 import { BRANCHES, DEVICES, ROLE_PERMISSIONS, USERS } from '../../data/business';
 import { toast } from '../../lib/notify';
 import { useTali } from '../../store/useTali';
@@ -194,7 +195,7 @@ export function SettingsPage() {
   return (
     <Stack>
       <PageHeader title="Settings">
-        <SegmentedControl value={tab} onChange={(v) => setTab(v as Tab)} data={Object.entries(TABS).map(([value, label]) => ({ value, label }))} />
+        <ScrollSegments value={tab} onChange={(v) => setTab(v as Tab)} data={Object.entries(TABS).map(([value, label]) => ({ value, label }))} />
       </PageHeader>
       <Panel />
     </Stack>

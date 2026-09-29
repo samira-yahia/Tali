@@ -10,7 +10,8 @@ import type { OrderType } from '../../types';
 import { openPayment } from '../payments/openPayment';
 import { openShiftModal } from '../shifts/shiftModals';
 
-export function OrderPanel() {
+/** `onClose` is set when the panel is shown in the phone bottom sheet. */
+export function OrderPanel({ onClose }: { onClose?: () => void }) {
   const s = useTali();
   const lines = priceLines(s.cart, s.menu);
   const totals = calcTotals(lines, s.draft.discount, s.draft.type);
@@ -23,6 +24,7 @@ export function OrderPanel() {
     }
     const result = s.sendOrder();
     if (!result.ok) return toast(result.error, 'red');
+    onClose?.();
     if (payNow) openPayment(result.value.no);
     else toast(`Order #${result.value.no} sent to kitchen${s.online ? '' : ' · queued offline'}`);
   };
@@ -75,9 +77,12 @@ export function OrderPanel() {
     <Stack h="100%" p="md" gap="sm">
       <Group justify="space-between">
         <Title order={4}>Order details</Title>
-        <Button variant="subtle" color="gray" size="xs" disabled={!s.cart.length} onClick={() => { s.clearCart(); toast('Order cleared'); }}>
-          Clear
-        </Button>
+        <Group gap={4}>
+          <Button variant="subtle" color="gray" size="xs" disabled={!s.cart.length} onClick={() => { s.clearCart(); toast('Order cleared'); }}>
+            Clear
+          </Button>
+          {onClose && <CloseButton onClick={onClose} aria-label="Close order" />}
+        </Group>
       </Group>
 
       <SegmentedControl fullWidth value={s.draft.type} onChange={(v) => s.setDraft({ type: v as OrderType })} data={ORDER_TYPES} />
@@ -144,9 +149,9 @@ export function OrderPanel() {
       </ScrollArea>
 
       <SimpleGrid cols={3} spacing={6}>
-        <Button variant="default" size="xs" leftSection={<IconPencil size={14} />} onClick={cookingRequest}>Request</Button>
-        <Button variant="default" size="xs" leftSection={<IconTicket size={14} />} onClick={voucher}>Voucher</Button>
-        <Button variant="default" size="xs" leftSection={<IconDiscount size={14} />} onClick={discount}>Discount</Button>
+        <Button variant="default" size="xs" px={6} leftSection={<IconPencil size={14} />} onClick={cookingRequest}>Request</Button>
+        <Button variant="default" size="xs" px={6} leftSection={<IconTicket size={14} />} onClick={voucher}>Voucher</Button>
+        <Button variant="default" size="xs" px={6} leftSection={<IconDiscount size={14} />} onClick={discount}>Discount</Button>
       </SimpleGrid>
 
       <Stack gap={4} fz="sm">
@@ -164,10 +169,10 @@ export function OrderPanel() {
       </Stack>
 
       <SimpleGrid cols={2}>
-        <Button color="violet" size="md" disabled={!s.cart.length} onClick={() => send(false)}>
+        <Button color="violet" size="md" fz="sm" px="xs" disabled={!s.cart.length} onClick={() => send(false)}>
           Send to kitchen
         </Button>
-        <Button size="md" disabled={!s.cart.length} onClick={() => send(true)}>
+        <Button size="md" fz="sm" px="xs" disabled={!s.cart.length} onClick={() => send(true)}>
           {s.cart.length ? `Pay ${whole(totals.total)}` : 'Pay'}
         </Button>
       </SimpleGrid>

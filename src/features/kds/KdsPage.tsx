@@ -1,6 +1,7 @@
-import { Badge, Button, Card, Group, SegmentedControl, SimpleGrid, Stack, Text } from '@mantine/core';
+import { Badge, Button, Card, Group, SimpleGrid, Stack, Text } from '@mantine/core';
 import { useState } from 'react';
 import { PageHeader, Spacer } from '../../components/ui/PageHeader';
+import { ScrollSegments } from '../../components/ui/ScrollSegments';
 import { STATUS_COLOR } from '../../components/ui/statusColors';
 import { LATE_AFTER_MINUTES, STATION_BY_CATEGORY } from '../../domain/constants';
 import { useNow } from '../../hooks/useNow';
@@ -45,7 +46,7 @@ export function KdsPage() {
   return (
     <Stack>
       <PageHeader title="Kitchen display">
-        <SegmentedControl
+        <ScrollSegments
           value={station}
           onChange={(v) => setStation(v as StationFilter)}
           data={STATIONS.map((st) => ({

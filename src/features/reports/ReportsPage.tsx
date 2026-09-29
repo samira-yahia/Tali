@@ -1,8 +1,9 @@
-import { Button, SegmentedControl, Stack } from '@mantine/core';
+import { Button, Stack } from '@mantine/core';
 import { IconDownload } from '@tabler/icons-react';
 import { useState } from 'react';
 import { DataTable } from '../../components/ui/DataTable';
 import { PageHeader, Spacer } from '../../components/ui/PageHeader';
+import { ScrollSegments } from '../../components/ui/ScrollSegments';
 import { buildReport, REPORT_TABS, toCsv, type ReportRows, type ReportTab } from '../../domain/reports';
 import { toast } from '../../lib/notify';
 import { useTali } from '../../store/useTali';
@@ -25,7 +26,7 @@ export function ReportsPage() {
   return (
     <Stack>
       <PageHeader title="Reports">
-        <SegmentedControl
+        <ScrollSegments
           value={tab}
           onChange={(v) => setTab(v as ReportTab)}
           data={Object.entries(REPORT_TABS).map(([value, label]) => ({ value, label }))}

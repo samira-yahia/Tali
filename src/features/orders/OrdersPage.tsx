@@ -1,7 +1,8 @@
-import { Badge, Button, Group, SegmentedControl, Stack, Text } from '@mantine/core';
+import { Badge, Button, Group, Stack, Text } from '@mantine/core';
 import { useState } from 'react';
 import { DataTable } from '../../components/ui/DataTable';
 import { PageHeader, Spacer } from '../../components/ui/PageHeader';
+import { ScrollSegments } from '../../components/ui/ScrollSegments';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { isOpen, isUnpaid, itemCount } from '../../domain/orders';
 import { useNow } from '../../hooks/useNow';
@@ -35,7 +36,7 @@ export function OrdersPage() {
   return (
     <Stack>
       <PageHeader title="Orders">
-        <SegmentedControl value={filter} onChange={setFilter} data={Object.entries(FILTERS).map(([value, f]) => ({ value, label: f.label }))} />
+        <ScrollSegments value={filter} onChange={setFilter} data={Object.entries(FILTERS).map(([value, f]) => ({ value, label: f.label }))} />
         <Spacer />
         <Text fz="sm" c="dimmed">Tap a status to move it forward</Text>
       </PageHeader>

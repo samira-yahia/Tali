@@ -58,7 +58,7 @@ Rules the code follows:
 - Each order line stores its unit price at the time of sale, so later menu price changes don't rewrite past receipts.
 - Purchase orders store real ingredient quantities; receiving one adds exactly those quantities to stock.
 - Gift card balances and loyalty points are deducted when the payment completes, not when a partial split is taken, so abandoning a payment doesn't lose balance.
-- The order panel is shown from tablet width up; the prototype stacked it under the page on phones.
+- On phones the side rail stays on the left (slimmer and scrollable), the order panel opens as a bottom sheet from a "View order" bar, and payment opens full screen. The prototype stacked the panel under the page.
 
 ## What is still simulated
 
