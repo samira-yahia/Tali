@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { KpiCard } from '../../components/ui/KpiCard';
 import { PageHeader, Spacer } from '../../components/ui/PageHeader';
-import { ScrollSegments } from '../../components/ui/ScrollSegments';
+import { SegmentTabs } from '../../components/ui/SegmentTabs';
 import { CATEGORIES, ORDER_TYPES } from '../../domain/constants';
 import { cashExpected, isOpen, isPaidSale, isUnpaid } from '../../domain/orders';
 import { whole } from '../../lib/format';
@@ -35,7 +35,7 @@ export function PosPage() {
       </SimpleGrid>
 
       <PageHeader title="Order line">
-        <ScrollSegments
+        <SegmentTabs
           value={lineType}
           onChange={(v) => setLineType(v as OrderType)}
           data={ORDER_TYPES.map((t) => ({ value: t, label: `${t} · ${orders.filter((o) => o.type === t && isOpen(o)).length}` }))}
@@ -48,7 +48,7 @@ export function PosPage() {
       <OrderLine type={lineType} />
 
       <PageHeader title="Menu">
-        <ScrollSegments
+        <SegmentTabs
           value={category}
           onChange={setCategory}
           data={['All', ...CATEGORIES].map((c) => ({

@@ -5,7 +5,7 @@ import { toggleConnection } from '../../app/connection';
 import { DataTable } from '../../components/ui/DataTable';
 import { InfoCard } from '../../components/ui/InfoRows';
 import { PageHeader } from '../../components/ui/PageHeader';
-import { ScrollSegments } from '../../components/ui/ScrollSegments';
+import { SegmentTabs } from '../../components/ui/SegmentTabs';
 import { BRANCHES, DEVICES, ROLE_PERMISSIONS, USERS } from '../../data/business';
 import { toast } from '../../lib/notify';
 import { useTali } from '../../store/useTali';
@@ -195,7 +195,7 @@ export function SettingsPage() {
   return (
     <Stack>
       <PageHeader title="Settings">
-        <ScrollSegments value={tab} onChange={(v) => setTab(v as Tab)} data={Object.entries(TABS).map(([value, label]) => ({ value, label }))} />
+        <SegmentTabs value={tab} onChange={(v) => setTab(v as Tab)} data={Object.entries(TABS).map(([value, label]) => ({ value, label }))} />
       </PageHeader>
       <Panel />
     </Stack>

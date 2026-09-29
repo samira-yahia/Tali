@@ -29,15 +29,20 @@ export function MenuGrid({ category, query }: { category: string; query: string 
         const add = () => (m.modifiers ? openModifierPicker(m) : addToCart(m.id));
         return (
           <Card key={m.id} p="sm" opacity={out ? 0.45 : 1}>
-            <Group wrap="nowrap" align="stretch">
-              <Center w={84} h={84} bg="dark.4" fz={40} style={{ borderRadius: 16, flexShrink: 0 }} aria-hidden>
+            <Group wrap="nowrap" align="stretch" gap="sm">
+              <Center w={{ base: 60, xs: 84 }} h={{ base: 60, xs: 84 }} bg="dark.4" fz={{ base: 30, xs: 40 }} style={{ borderRadius: 16, flexShrink: 0 }} aria-hidden>
                 {m.icon}
               </Center>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <Text fz="xs" c="dimmed">
-                  {m.category}
-                </Text>
-                <Text fw={600} truncate>
+                <Group justify="space-between" wrap="nowrap" gap={6}>
+                  <Text fz="xs" c="dimmed" truncate>
+                    {m.category}
+                  </Text>
+                  <Text fw={600} fz="sm" style={{ flexShrink: 0 }}>
+                    {m.price.toFixed(2)}
+                  </Text>
+                </Group>
+                <Text fw={600} lh={1.3}>
                   {m.name}
                 </Text>
                 <Group gap={8} mt={8}>
@@ -53,7 +58,6 @@ export function MenuGrid({ category, query }: { category: string; query: string 
                   {out && <Badge color="red">{m.hidden ? 'Hidden' : 'Out of stock'}</Badge>}
                 </Group>
               </div>
-              <Text fw={600}>{m.price.toFixed(2)}</Text>
             </Group>
           </Card>
         );
